@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --text-semi-green: #00FF66;
+    --button-colors:#DB4444;
+}
