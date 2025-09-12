@@ -14,7 +14,6 @@ const ExploreProducts = () => {
     const { products } = useData();
     const catigory = async () => {
         const ccc = await axios.get("https://dummyjson.com/products/category/beauty");
-        console.log(ccc)
     }
     catigory()
     const productsWithDiscount = products.map((product) => (

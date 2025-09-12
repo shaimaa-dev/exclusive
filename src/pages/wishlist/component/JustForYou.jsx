@@ -6,7 +6,6 @@ import useData from "../../../hooks/useData"
 
 const JustForYou = () => {
     const { products , wishListProducts } = useData();
-   console.log(products)
     const productsForYou = useMemo(() => {
         return  products.filter((product) =>
             wishListProducts.some((pro) => product.category === pro.category) &&

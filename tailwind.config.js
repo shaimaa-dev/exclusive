@@ -6,20 +6,20 @@ export default {
   ],
   theme: {
     screens: {
-      xs: "320px",
-      sm: "375px",
-      sml: "500px",
-      md: "667px",
-      mdl: "768px",
-      lg: "660px",
-      lgl: "1024px",
-      xl: "1280px",
+      xs: "320px",   // موبايل صغير
+      sm: "375px",   // موبايل متوسط
+      sml: "500px",  // موبايل أكبر
+      md: "667px",   // موبايل كبير
+      lg: "768px",   // تابلت
+      lgl: "1024px", // لابتوب صغير
+      xl: "1280px",  // لابتوب متوسط
+      "2xl": "1536px" // شاشات كبيرة
     },
     extend: {
       colors: {
-      semigreen: " var(--text-semi-green)",
-      buttoncolor:"var(--button-colors)",
-    },
+        semigreen: " var(--text-semi-green)",
+        buttoncolor: "var(--button-colors)",
+      },
     },
   },
   plugins: [],

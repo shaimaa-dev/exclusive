@@ -22,7 +22,6 @@ const AppProvider = ({ children }) => {
       try {
         const data = await axios.get(url);
         dispatch({ type: action, payload: data.data.products });
-        console.log(data.data.products ,'context' , action)
       } catch (error) {
         console.log(error);
       }

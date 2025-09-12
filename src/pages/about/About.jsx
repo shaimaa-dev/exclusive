@@ -1,10 +1,16 @@
-import React from 'react'
+import Services from "../home/components/Services";
+import OurStory from "./components/OurStory";
+import SectionServices from "./components/SectionServices";
+import TeamSection from "./components/TeamSection";
 
 const About = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <OurStory />
+      <SectionServices />
+      <TeamSection />
+      <Services />
+    </>
   )
 }
 
