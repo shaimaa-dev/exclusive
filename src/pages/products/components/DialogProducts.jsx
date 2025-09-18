@@ -1,5 +1,5 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
-import useData from '../../hooks/useData';
+import useData from '../../../hooks/useData';
 
 const DialogProducts = () => {
   const { dispatch , selectedProduct , isOpen } = useData();

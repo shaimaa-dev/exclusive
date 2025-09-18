@@ -2,25 +2,22 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/grid';
-import { Grid, Navigation } from 'swiper/modules';
+import { Autoplay, Grid, Navigation } from 'swiper/modules';
 import useData from '../../../hooks/useData';
-import ProductCard from '../../../products/ProductCard';
+import ProductCard from "../../products/components/ProductCard";
 import HeaderSections from './HeaderSections';
 import { HiMiniArrowLongLeft, HiMiniArrowLongRight } from 'react-icons/hi2';
-import DialogProducts from '../../../products/components/DialogProducts';
-import axios from 'axios';
+import DialogProducts from '../../products/components/DialogProducts';
+import { Link } from 'react-router-dom';
+
 
 const ExploreProducts = () => {
     const { products } = useData();
-    const catigory = async () => {
-        const ccc = await axios.get("https://dummyjson.com/products/category/beauty");
-    }
-    catigory()
     const productsWithDiscount = products.map((product) => (
         <SwiperSlide key={product.id}>
-            <ProductCard 
-                product={product} 
-                haveDiscount={false} 
+            <ProductCard
+                product={product}
+                haveDiscount={false}
             />
         </SwiperSlide>
     ));
@@ -39,8 +36,9 @@ const ExploreProducts = () => {
                 }}
                 grid={{
                     rows: 2,
-                    fill:"row"
+                    fill: "row"
                 }}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
                 breakpoints={{
                     320: {
                         slidesPerView: 2,
@@ -57,14 +55,19 @@ const ExploreProducts = () => {
                         spaceBetween: 20,
                         grid: { rows: 2, fill: "row" },
                     },
+                    1536: {
+                        slidesPerView: 5,
+                        spaceBetween: 20,
+                        grid: { rows: 2, fill: "row" },
+                    }
                 }}
                 spaceBetween={20}
-                modules={[Grid , Navigation]} 
+                modules={[Grid, Navigation, Autoplay]}
                 className="mySwiper"
             >
                 {productsWithDiscount}
             </Swiper>
-            <div className='flex gap-2 absolute right-2 top-10'>
+            <div className='hidden lg:flex gap-2 absolute right-2 top-10'>
                 <div className="swiper-button-prev-product flex items-center cursor-pointer justify-center bg-slate-100 text-2xl w-10 h-10 rounded-full">
                     <HiMiniArrowLongLeft />
                 </div>
@@ -73,6 +76,9 @@ const ExploreProducts = () => {
                 </div>
             </div>
             <DialogProducts />
+            <Link to='/products' className='capitalize text-white bg-buttoncolor py-2 px-4 rounded-sm block my-6 mx-auto w-fit '>
+                view all products
+            </Link>
         </div>
     );
 };

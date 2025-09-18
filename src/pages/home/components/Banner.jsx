@@ -30,7 +30,7 @@ const Banner = () => {
         className="mySwiper bg-black text-white mt-4 max-h-fit"
       >
         <SwiperSlide>
-          <div className='flex flex-col justify-around items-center mdl:flex-row  '>
+          <div className='flex flex-col justify-around items-center  lg:flex-row  '>
             <div className='mt-5 lgl:mt-0 lgl:ml-0'>
               <div className='flex gap-2 justify-center items-center text-center '>
                 <FaApple className='text-4xl mdl:text-3xl' />

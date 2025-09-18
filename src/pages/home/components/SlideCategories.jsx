@@ -5,7 +5,7 @@ import { SwiperSlide } from 'swiper/react'
 const SlideCategories = () => {
     return (
         <div className='bg-black text-white'>
-            <div className='flex flex-col justify-around items-center mdl:flex-row'>
+            <div className='flex flex-col justify-around items-center lg:flex-row'>
             <div className='mt-5 lgl:mt-0'>
                 <p className='text-semigreen text-center mdl:text-left'>categories</p>
                 <h3 className='text-3xl font-semibold capitalize text-center mdl:text-left my-4'>enhance your <br />music experience</h3>

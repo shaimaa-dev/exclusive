@@ -42,7 +42,8 @@ const AppProvider = ({ children }) => {
           selectedProduct: state.selectedProduct,
           isOpen: state.isOpen, 
           user: state.user,
-          wishListProducts: state.wishListProducts
+          wishListProducts: state.wishListProducts,
+          cartProducts:state.cartProducts,
         }}>
         {children}
       </AppContext.Provider>

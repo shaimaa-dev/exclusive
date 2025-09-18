@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
-import useData from '../hooks/useData';
+import useData from '../../../hooks/useData';
 
 const ProductCard = ({ product, haveDiscount }) => {
     const { wishListProducts, dispatch } = useData();
@@ -20,9 +20,11 @@ const ProductCard = ({ product, haveDiscount }) => {
             dispatch({ type: "ADD_TO_WISHLIST_PRODUCTS", payload: product });
         }
     }
-
+    const addToCart = () => {
+        dispatch({type:"ADD_TO_CART",payload:product})
+    }
     return (
-        <div className='group relative z-30'>
+        <div className='group relative z-30 '>
             <Link>
                 <div className='bg-[#f5f5f5] h-[250px] flex items-center justify-center'>
                     <img src={product.thumbnail} className='w-[200px]' alt="img-product" />
@@ -51,7 +53,7 @@ const ProductCard = ({ product, haveDiscount }) => {
             </Link>
 
             {haveDiscount && <div className='bg-buttoncolor px-1 rounded-md absolute left-2 top-2 text-xl text-white '>{product.discountPercentage < 1 ? Math.max(product.discountPercentage).toFixed(2) : Math.max(product.discountPercentage).toFixed(0)}%</div>}
-            <div className=' px-2 rounded-md gap-3 absolute right-2 top-2 text-xl text-black  '>
+            <div className=' px-2 rounded-md absolute right-2 top-2 text-xl text-black  '>
 
                 <button onClick={toggleWishList} className="w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center">
                     {
@@ -60,11 +62,14 @@ const ProductCard = ({ product, haveDiscount }) => {
                     }
                 </button>
 
-                <button onClick={openDialog} className="w-[30px] h-[30px] rounded-full bg-white flex items-center justify-center"> <FaEye className='cursor-pointer text-black' /> </button>
+                <button onClick={openDialog} className="w-[30px] h-[30px] mt-2 rounded-full bg-white flex items-center justify-center"> <FaEye className='cursor-pointer text-black' /> </button>
             </div>
             <div className='absolute top-[215px] w-[100%]'>
-                <button className='btn block w-full mx-auto bg-black text-white py-2 transition-all duration-300 ease-in-out
-            opacity-100 translate-y-0 capitalize lgl:opacity-0 lgl:translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>add to cart</button>
+                <button
+                onClick={addToCart} 
+                className='btn block w-full mx-auto bg-black text-white py-2 transition-all duration-300 ease-in-out
+                 opacity-100 translate-y-0 capitalize lgl:opacity-0 lgl:translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>add to cart
+                </button>
             </div>
         </div>
     )
