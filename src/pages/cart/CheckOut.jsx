@@ -145,7 +145,7 @@ const CheckOut = () => {
                   }
                   <div className="flex justify-between my-4 pb-3 border-b-[1px] border-gray-400">
                     <p className="text-xl">subtotal:</p>
-                    <p className="text-xl">${ buyProductNow ? subTotalBuyNow.toFixed(1) : subTotalAllProducts.toFixed(1)}</p>
+                    <p className="text-xl">${ buyProductNow ? subTotalBuyNow.toFixed() : subTotalAllProducts.toFixed()}</p>
                   </div>
                   <div className="flex justify-between my-4 pb-2 border-b-[1px] border-gray-400">
                     <p className="text-xl">shipping:</p>
@@ -153,7 +153,7 @@ const CheckOut = () => {
                   </div>
                   <div className="flex justify-between my-4 pb-2 border-b-[1px] border-gray-400">
                     <p className="text-xl">total:</p>
-                    <p className="text-xl">${subTotalAllProducts.toFixed(1)}</p>
+                    <p className="text-xl">${ buyProductNow ? subTotalBuyNow.toFixed() : subTotalAllProducts.toFixed()}</p>
                   </div>
                   <button type="submit" disabled={isSubmitting} className="disabled:bg-gray-600 capitalize py-2 px-4 bg-buttoncolor rounded-md text-white text-xl">place order</button>
                 </div>
