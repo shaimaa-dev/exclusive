@@ -34,7 +34,6 @@ const AppProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const data = await axios.get(`https://dummyjson.com/products?limit=10&skip=${Math.ceil((state.products.page - 1 ) * 10)}`);
-        console.log(data.data.products)
         dispatch({ type: "ADD_PRODUCTS", payload: { productslist: data.data.products , page: state.products.page, pages: Math.ceil(data.data.total / 10) } });
       } catch (error) {
         console.log(error);

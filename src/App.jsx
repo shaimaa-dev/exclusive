@@ -19,6 +19,7 @@ import Cart from "./pages/cart/Cart";
 import CheckOut from "./pages/cart/CheckOut";
 import Products from "./pages/products/Products";
 import ProductDetails from "./pages/productdetails/ProductDetails";
+import NotFound from "./pages/notfound/NotFound";
 
 const Layout = () => {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/products" element={<Products />} />
           <Route path={`/products/:id`} element={<ProductDetails />} />
+          <Route path='*' element={<NotFound />} />
         </Route>
       </Route>
     )
