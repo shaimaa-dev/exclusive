@@ -23,13 +23,10 @@ const Footer = () => {
             <div>
                 <h5 className='text-2xl font-semibold mb-4 block capitalize' >account</h5>
                 <div>
-                    <Link className="text-lg block mb-1 hover:text-gray-400">
-                        my account
-                    </Link>
-                    <Link className="text-lg block mb-1 hover:text-gray-400">Login/register</Link>
-                    <Link className="text-lg block mb-1 hover:text-gray-400">cart</Link>
-                    <Link className="text-lg block mb-1 hover:text-gray-400">wishlist</Link>
-                    <Link className="text-lg block mb-1 hover:text-gray-400">shop</Link>
+                    <Link to="/signup" className="text-lg block mb-1 hover:text-gray-400">Login/register</Link>
+                    <Link to="/cart" className="text-lg block mb-1 hover:text-gray-400">cart</Link>
+                    <Link to="/wishlist" className="text-lg block mb-1 hover:text-gray-400">wishlist</Link>
+                    <Link to="/products" className="text-lg block mb-1 hover:text-gray-400">shop</Link>
                 </div>
             </div>
             <div>

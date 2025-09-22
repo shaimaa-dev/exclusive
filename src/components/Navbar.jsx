@@ -23,7 +23,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navLinks = [
     { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "Contact", path: "/contact" },
+    { id: 2, name: "products", path: "/products" },
     { id: 3, name: "About", path: "/about" },
   ];
   return (

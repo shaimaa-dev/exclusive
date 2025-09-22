@@ -20,6 +20,8 @@ import CheckOut from "./pages/cart/CheckOut";
 import Products from "./pages/products/Products";
 import ProductDetails from "./pages/productdetails/ProductDetails";
 import NotFound from "./pages/notfound/NotFound";
+import { ClipLoader } from "react-spinners";
+import { useEffect, useState } from "react";
 
 const Layout = () => {
   return (
@@ -32,6 +34,13 @@ const Layout = () => {
 };
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [])
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
@@ -53,9 +62,13 @@ function App() {
   );
   return (
     <>
-      <AppProvider>
-        <RouterProvider router={router} />
-      </AppProvider>
+      {
+        loading ? <div className="h-[100vh] flex items-center justify-center"><ClipLoader className="absolute" color="#db4444" size={50} /></div> :
+          <AppProvider>
+            <RouterProvider router={router} />
+          </AppProvider>
+      }
+
     </>
   );
 }

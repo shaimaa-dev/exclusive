@@ -13,7 +13,7 @@ const JustForYou = () => {
             product.rating > 4 &&
             !wishListProducts.some((pro) => pro.id === product.id)
         )
-    }, [wishListProducts, ExploreProducts])
+    }, [wishListProducts , ExploreProducts])
     console.log(productsForYou, 'product for you')
     const productListForYou = productsForYou.map((product) => {
         return (
