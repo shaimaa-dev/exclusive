@@ -4,14 +4,13 @@ import useData from "../../../hooks/useData";
 import { FaEye } from "react-icons/fa";
 
 const ProductWishList = ({ product, showRemove, showEye }) => {
-    {/*      price apter discount         */ }
+    {/*      price after discount         */ }
     const discount = product.price - (product.price * product.discountPercentage / 100);
     const { dispatch } = useData();
     const removeProductFromWishList = () => {
         dispatch({ type: "REMOVE_PRODUCT_FROM_WISHLIST", payload: product })
     }
-    const openDialog = (e) => {
-        e.preventDefault();
+    const openDialog = () => {
         dispatch({ type: "OPEN_DIALOG", payload: product })
     }
     return (

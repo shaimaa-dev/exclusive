@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 
 
 const ExploreProducts = () => {
-    const { products } = useData();
-    const productsWithDiscount = products.map((product) => (
+    const { ExploreProducts } = useData();
+    const productsWithDiscount = ExploreProducts.map((product) => (
         <SwiperSlide key={product.id}>
             <ProductCard
                 product={product}

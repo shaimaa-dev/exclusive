@@ -18,6 +18,7 @@ import WishList from "./pages/wishlist/WishList";
 import Cart from "./pages/cart/Cart";
 import CheckOut from "./pages/cart/CheckOut";
 import Products from "./pages/products/Products";
+import ProductDetails from "./pages/productdetails/ProductDetails";
 
 const Layout = () => {
   return (
@@ -42,8 +43,8 @@ function App() {
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/products" element={<Products />}></Route>
-
+          <Route path="/products" element={<Products />} />
+          <Route path={`/products/:id`} element={<ProductDetails />} />
         </Route>
       </Route>
     )

@@ -1,4 +1,3 @@
-import React from 'react'
 import useData from '../../../hooks/useData';
 // import icons 
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";

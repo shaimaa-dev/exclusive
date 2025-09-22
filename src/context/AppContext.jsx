@@ -28,8 +28,20 @@ const AppProvider = ({ children }) => {
     };
     fetchData("https://dummyjson.com/products?sortBy=discountPercentage&order=desc", "ADD_FLASH_PRODUCTS");
     fetchData("https://dummyjson.com/products?sortBy=rating&order=desc", "ADD_BEST_PRODUCTS");
-    fetchData("https://dummyjson.com/products?limit=194", "ADD_PRODUCTS");
+    fetchData("https://dummyjson.com/products", "ADD_EXPLORE_PRODUCTS");
   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(`https://dummyjson.com/products?limit=10&skip=${Math.ceil((state.products.page - 1 ) * 10)}`);
+        console.log(data.data.products)
+        dispatch({ type: "ADD_PRODUCTS", payload: { productslist: data.data.products , page: state.products.page, pages: Math.ceil(data.data.total / 10) } });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+   fetchData();
+  },[state.products.page]);
   return (
     <>
       <AppContext.Provider
@@ -39,6 +51,7 @@ const AppProvider = ({ children }) => {
           products:state.products,
           FlashProducts: state.Flashproducts,
           BestProducts: state.BestProducts,
+          ExploreProducts: state.ExploreProducts,
           selectedProduct: state.selectedProduct,
           isOpen: state.isOpen, 
           user: state.user,

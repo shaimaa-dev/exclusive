@@ -1,9 +1,14 @@
 
 export const initialState = {
   categories: [],
-  products: [],
+  products: {
+    productslist: [],
+    pages: 0,
+    page: 1
+  },
   Flashproducts: [],
   BestProducts: [],
+  ExploreProducts: [],
   wishListProducts: [],
   cartProducts: [],
   selectedProduct: null,
@@ -38,11 +43,21 @@ const AppReducer = (state = initialState, action) => {
         ...state,
         BestProducts: bestSallerFilter(action.payload)
       }
+    case "ADD_EXPLORE_PRODUCTS":
+      return {
+        ...state,
+        ExploreProducts: action.payload
+      }
     case "ADD_PRODUCTS":
       return {
         ...state,
-        products: action.payload
+        products: { ...state.products, ...action.payload }
       }
+    case "SET_PAGE":
+      return {
+        ...state,
+        products: { ...state.products, page: action.payload }
+      };
     case "ADD_TO_WISHLIST_PRODUCTS":
       return addToWishList(state, action);
     case "REMOVE_PRODUCT_FROM_WISHLIST":

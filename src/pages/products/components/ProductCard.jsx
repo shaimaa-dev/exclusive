@@ -25,7 +25,7 @@ const ProductCard = ({ product, haveDiscount }) => {
     }
     return (
         <div className='group relative z-30 '>
-            <Link>
+            <Link to={`/products/${product.id}`}>
                 <div className='bg-[#f5f5f5] h-[250px] flex items-center justify-center'>
                     <img src={product.thumbnail} className='w-[200px]' alt="img-product" />
                 </div>
@@ -33,8 +33,8 @@ const ProductCard = ({ product, haveDiscount }) => {
                 <div className="div flex gap-3 mt-2">
                     {product.discountPercentage ?
                         <>
-                            <p className='text-buttoncolor'> ${discount.toFixed(2)}</p>
-                            <p className='text-gray-600'> ${product.price}</p>
+                            <p className='text-buttoncolor'> ${discount.toFixed(1)}</p>
+                            <p className='text-gray-600 line-through'> ${product.price.toFixed()}</p>
                         </> :
                         <p className='text-buttoncolor'> ${product.price}</p>
                     }

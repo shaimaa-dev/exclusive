@@ -10,11 +10,16 @@ import { collection, addDoc } from "firebase/firestore";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const CheckOut = () => {
   const { cartProducts, dispatch } = useData();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location)
+  const buyProductNow = location.state?.product;
+  const subTotalBuyNow = buyProductNow ? buyProductNow.subtotal : 0;
+  console.log(subTotalBuyNow)
   const subTotalAllProducts = cartProducts?.reduce((subtotal, product) => {
     return subtotal + product.subtotal
   }, 0)
@@ -51,8 +56,8 @@ const CheckOut = () => {
               try {
                 const docRef = await addDoc(collection(db, "orders"), {
                   ...values,
-                  products: cartProducts,
-                  subTotalAllProducts: subTotalAllProducts,
+                  products: buyProductNow ? [buyProductNow] : cartProducts,
+                  subTotalAllProducts: buyProductNow ? subTotalBuyNow: subTotalAllProducts,
                   createdAt: moment().format('MMMM Do YYYY, h:mm:ss a')
                 });
                 console.log("Document written with ID: ", docRef.id);
@@ -116,22 +121,31 @@ const CheckOut = () => {
                   <ErrorMessage name="email" component="div" className="text-red-500 text-lg" />
                 </div>
                 <div>
-                  {cartProducts.map((product) => {
-                    return (
-                      <div key={product.id} className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <img src={product.thumbnail} className="w-[80px]" alt="product img" />
-                          <h5 className="text-xl font-semibold">{product.title} </h5>
-                        </div>
-                        <p className="text-xl">{product.subtotal.toFixed(1)}</p>
+                  {
+                    buyProductNow ? <div key={buyProductNow.id} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <img src={buyProductNow.thumbnail} className="w-[80px]" alt="product img" />
+                        <h5 className="text-xl font-semibold">{buyProductNow.title} </h5>
                       </div>
-                    )
-                  })
+                      <p className="text-xl">{subTotalBuyNow.toFixed(1)}</p>
+                    </div> : cartProducts.map((product) => {
+                      return (
+                        <div key={product.id} className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <img src={product.thumbnail} className="w-[80px]" alt="product img" />
+                            <h5 className="text-xl font-semibold">{product.title} </h5>
+                          </div>
+                          <p className="text-xl">{product.subtotal.toFixed(1)}</p>
+                        </div>
+                      )
+                    })
+                  }
+                  {
 
                   }
                   <div className="flex justify-between my-4 pb-3 border-b-[1px] border-gray-400">
                     <p className="text-xl">subtotal:</p>
-                    <p className="text-xl">${subTotalAllProducts.toFixed(1)}</p>
+                    <p className="text-xl">${ buyProductNow ? subTotalBuyNow.toFixed(1) : subTotalAllProducts.toFixed(1)}</p>
                   </div>
                   <div className="flex justify-between my-4 pb-2 border-b-[1px] border-gray-400">
                     <p className="text-xl">shipping:</p>
