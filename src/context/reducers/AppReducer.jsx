@@ -9,8 +9,8 @@ export const initialState = {
   Flashproducts: [],
   BestProducts: [],
   ExploreProducts: [],
-  wishListProducts: [],
-  cartProducts: [],
+  wishListProducts: JSON.parse(localStorage.getItem("wishlist")) || [],
+  cartProducts: JSON.parse(localStorage.getItem("cart")) || [],
   selectedProduct: null,
   isOpen: false,
   user: null
@@ -58,73 +58,95 @@ const AppReducer = (state = initialState, action) => {
         ...state,
         products: { ...state.products, page: action.payload }
       };
-    case "ADD_TO_WISHLIST_PRODUCTS":
-      return addToWishList(state, action);
-    case "REMOVE_PRODUCT_FROM_WISHLIST":
+    case "ADD_TO_WISHLIST_PRODUCTS": {
+      const newState = addToWishList(state, action);
+      localStorage.setItem("wishlist", JSON.stringify(newState.wishListProducts));
+      return newState;
+    }
+    case "REMOVE_PRODUCT_FROM_WISHLIST": {
+      const newWishList = state.wishListProducts.filter(
+        (product) => product.id !== action.payload.id
+      );
+      localStorage.setItem("wishlist", JSON.stringify(newWishList));
       return {
         ...state,
-        wishListProducts: state.wishListProducts.filter((product) => product.id !== action.payload.id)
-      }
+        wishListProducts: newWishList
+      };
+    }
     case "ADD_TO_CART": {
-      const productInCart = state.cartProducts.find((product) => product.id === action.payload.id);
+      const productInCart = state.cartProducts.find(
+        (product) => product.id === action.payload.id
+      );
       const priceAfterDiscount = action.payload.discountPercentage > 0
         ? action.payload.price - (action.payload.price * action.payload.discountPercentage / 100)
         : action.payload.price;
+
+      const newCart = productInCart
+        ? state.cartProducts.map((product) =>
+          product.id === action.payload.id
+            ? {
+              ...product,
+              quantity: product.quantity + 1,
+              subtotal: priceAfterDiscount * (product.quantity + 1)
+            }
+            : product
+        )
+        : [
+          ...state.cartProducts,
+          { ...action.payload, quantity: 1, subtotal: priceAfterDiscount }
+        ];
+
+      localStorage.setItem("cart", JSON.stringify(newCart));
+
       return {
         ...state,
-        cartProducts: productInCart
-          ? state.cartProducts.map((product) =>
-            product.id === action.payload.id
-              ? {
-                ...product,
-                quantity: product.quantity + 1,
-                subtotal: priceAfterDiscount * (product.quantity + 1)
-              }
-              : product
-          )
-          : [...state.cartProducts, {
-            ...action.payload,
-            quantity: 1,
-            subtotal: priceAfterDiscount
-          }]
-      }
+        cartProducts: newCart
+      };
     }
     case "INCREASE_CART_QUANTITY": {
       const priceAfterDiscount = action.payload.discountPercentage > 0 ? action.payload.price - (action.payload.price * action.payload.discountPercentage / 100) : action.payload.price;
+      const updateCartAfterIncreaseQuantity = state.cartProducts.map((product) => {
+        return product.id === action.payload.id ?
+          { ...product, quantity: product.quantity + 1, subtotal: priceAfterDiscount * (product.quantity + 1) }
+          : product
+      })
+      localStorage.setItem("cart", JSON.stringify(updateCartAfterIncreaseQuantity));
       return {
         ...state,
-        cartProducts: state.cartProducts.map((product) => {
-          return product.id === action.payload.id ?
-            { ...product, quantity: product.quantity + 1, subtotal: priceAfterDiscount * (product.quantity + 1) }
-            : product
-        })
+        cartProducts: updateCartAfterIncreaseQuantity
       }
     }
     case "DECREASE_CART_QUANTITY": {
       const priceAfterDiscount = action.payload.discountPercentage > 0 ? action.payload.price - (action.payload.price * action.payload.discountPercentage / 100) : action.payload.price;
+      const updateCart = state.cartProducts.map((product) => {
+        return product.id === action.payload.id ?
+          { ...product, quantity: product.quantity - 1, subtotal: priceAfterDiscount * (product.quantity - 1) }
+          : product
+      })
+       localStorage.setItem("cart", JSON.stringify(updateCart));
       return {
         ...state,
-        cartProducts: state.cartProducts.map((product) => {
-          return product.id === action.payload.id ?
-            { ...product, quantity: product.quantity - 1, subtotal: priceAfterDiscount * (product.quantity - 1) }
-            : product
-        })
+        cartProducts: updateCart
       }
     }
     case "REMOVE_PRODUCT_FROM_CART": {
-      const updateData = state.cartProducts.filter((product) => {
+      const updateCart = state.cartProducts.filter((product) => {
         return product.id !== action.payload.id;
       })
+      localStorage.setItem("cart", JSON.stringify(updateCart));
       return {
         ...state,
-        cartProducts: updateData
+        cartProducts: updateCart
       }
     }
-    case "CLEAR_CART":
+    case "CLEAR_CART": {
+      const clearProducts = [];
+      localStorage.setItem("cart", JSON.stringify(clearProducts));
       return {
         ...state,
-        cartProducts: []
+        cartProducts: clearProducts
       }
+    }
     case "OPEN_DIALOG":
       return {
         ...state,

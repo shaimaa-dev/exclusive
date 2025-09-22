@@ -11,5 +11,6 @@ import aboutImgSide from './Side Image (1).png';
 import founder from "./image 46.png";
 import director from "./image 51.png";
 import designer from "./image 47.png";
+import cartImage from "./272-2727925_cart-png (1).png";
 
-export { logo , apple , imgslider ,  deliverd , services , gurantee , phone , google ,imgWishlist , aboutImgSide , founder,director,designer  };
+export { logo , apple , imgslider ,  deliverd , services , gurantee , phone , google ,imgWishlist , aboutImgSide , founder,director,designer, cartImage  };

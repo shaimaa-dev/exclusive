@@ -76,11 +76,11 @@ const Navbar = () => {
         {/* lists of faviorites and cart */}
         <div className="flex gap-3 ml-4">
           <Link to="/wishlist" className="relative">
-            <CiHeart className="text-2xl text-black" />
+            <CiHeart className="text-3xl text-black" />
             {wishListProducts.length >= 1 && <p className="h-[17px] w-[17px] rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center"><span>{wishListProducts.length}</span></p>}
           </Link>
-          <Link to="/cart">
-            <IoCartOutline className="text-2xl text-black" />
+          <Link to="/cart" className="relative">
+            <IoCartOutline className="text-3xl text-black" />
             {cartProducts.length >= 1 && <p className="h-[17px] w-[17px] rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center"><span>{cartProducts.length}</span></p>}
           </Link>
         </div>
