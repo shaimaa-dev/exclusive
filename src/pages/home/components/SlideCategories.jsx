@@ -1,6 +1,4 @@
-import React from 'react'
 import { imgslider } from '../../../assets'
-import { SwiperSlide } from 'swiper/react'
 
 const SlideCategories = () => {
     return (

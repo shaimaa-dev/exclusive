@@ -22,6 +22,7 @@ import ProductDetails from "./pages/productdetails/ProductDetails";
 import NotFound from "./pages/notfound/NotFound";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
+import Category from "./pages/category/Category";
 
 const Layout = () => {
   return (
@@ -54,7 +55,8 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/products" element={<Products />} />
-          <Route path={`/products/:id`} element={<ProductDetails />} />
+          <Route path={`/products/:category/:id`} element={<ProductDetails />} />
+          <Route path={`/products/:category`} element={<Category />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Route>

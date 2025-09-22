@@ -16,7 +16,7 @@ const ProductWishList = ({ product, showRemove, showEye }) => {
     }
     return (
         <div className='group relative z-30'>
-            <Link to={`/products/${product.id}`}>
+            <Link to={`/products/${product.category}/${product.id}`}>
                 <div className='bg-[#f5f5f5] h-[250px] flex items-center justify-center'>
                     <img src={product.thumbnail} className='w-[200px]' alt="img-product" />
                 </div>
