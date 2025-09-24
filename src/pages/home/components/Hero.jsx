@@ -1,6 +1,6 @@
 import useData from "../../../hooks/useData";
 import { IoIosArrowForward } from "react-icons/io";
-import Banner from "./banner";
+import Banner from "./Banner"
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
