@@ -37,10 +37,10 @@ const Layout = () => {
 function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const removeLoading = setTimeout(() => {
       setLoading(false);
     }, 1000);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(removeLoading);
   }, [])
   const router = createBrowserRouter(
     createRoutesFromElements(

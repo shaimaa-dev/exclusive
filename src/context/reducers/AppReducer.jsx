@@ -123,7 +123,7 @@ const AppReducer = (state = initialState, action) => {
           { ...product, quantity: product.quantity - 1, subtotal: priceAfterDiscount * (product.quantity - 1) }
           : product
       })
-       localStorage.setItem("cart", JSON.stringify(updateCart));
+      localStorage.setItem("cart", JSON.stringify(updateCart));
       return {
         ...state,
         cartProducts: updateCart
@@ -145,6 +145,21 @@ const AppReducer = (state = initialState, action) => {
       return {
         ...state,
         cartProducts: clearProducts
+      }
+    }
+    case "MOVE_WISHLIST_TO_CART": {
+      const updateCart = [...state.cartProducts];
+      action.payload.forEach((product) => {
+        const productInCart = updateCart.find((productCart)=> productCart.id == product.id);
+        if(productInCart) {
+          productInCart.quantity += 1;
+        } else {
+          updateCart.push({ ...product, quantity: 1 });
+        }
+      });
+      return {
+        ...state,
+        cartProducts: updateCart
       }
     }
     case "OPEN_DIALOG":
