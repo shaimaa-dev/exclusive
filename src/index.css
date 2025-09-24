@@ -3,6 +3,37 @@
 @tailwind utilities;
 
 :root {
-    --text-semi-green: #00FF66;
-    --button-colors:#DB4444;
+  --text-semi-green: #00ff66;
+  --button-colors: #db4444;
+}
+/* src/index.css */
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/font/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/font/Poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/font/Poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/font/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+body {
+  font-family: "Poppins", sans-serif;
 }

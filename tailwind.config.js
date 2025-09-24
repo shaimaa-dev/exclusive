@@ -20,7 +20,10 @@ export default {
         semigreen: " var(--text-semi-green)",
         buttoncolor: "var(--button-colors)",
       },
-    },
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'], 
+      },
+    }
   },
   plugins: [],
 }

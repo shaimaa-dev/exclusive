@@ -7,7 +7,6 @@ const Hero = () => {
   const { categories } = useData();
   const navigate = useNavigate()
   const categoriesList = categories.slice(0,9);
-  console.log(categoriesList)
   return (
     <div className="flex w-[85%] mx-auto gap-4">
       <div className="hidden lgl:flex flex-col  border-r-2 border-gray-200 w-[30%] gap-1">
