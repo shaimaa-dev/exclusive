@@ -11,6 +11,7 @@ import { FaArrowRight } from "react-icons/fa6";
 // import images
 import { apple } from '../../../assets/index';
 import SlideCategories from './SlideCategories';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -37,9 +38,9 @@ const Banner = () => {
                 <p>iphone 14 series</p>
               </div>
               <h3 className='text-3xl my-3 text-semibold text-center mdl:text-left '>Up to 10% <br />off Voucher</h3>
-              <button className='flex gap-3 items-center mt-6 mx-auto mdl:mx-0'>
+              <Link to='/products' className='flex gap-3 items-center mt-6 mx-auto mdl:mx-0'>
                 <span className='capitalize border-b-2 border-white pb-1'>shop now</span><FaArrowRight />
-              </button>
+              </Link>
             </div>
             <div>
               <img src={apple} className='w-[400px] mt-12' alt='banner-img' />
