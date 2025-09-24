@@ -9,7 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { google } from '../../../assets/index'
 import useData from "../../../hooks/useData";
-import { FadeLoader } from "react-spinners";
+import { MoonLoader } from "react-spinners";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const [emailErrorMessage, setEmailErrorMessage] = useState(null)
@@ -78,9 +79,16 @@ const Register = () => {
                                     updateProfile(auth.currentUser, {
                                         displayName: values.userName
                                     });
+                                }
+                            }).then(() => {
+                                Swal.fire({
+                                    title: "sign up successfully",
+                                    icon: "success",
+                                    draggable: true
+                                }).then(() => {
                                     resetForm();
                                     navigate("/login", { replace: true });
-                                }
+                                })
                             })
                             .catch((error) => {
                                 setEmailErrorMessage(handleAuthError(error.code));
@@ -113,7 +121,7 @@ const Register = () => {
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center justify-center gap-2">
-                                        <FadeLoader color="#ffffff" height={8} size={20} width={2} radius={2} margin={2} />
+                                        <MoonLoader size={20} /> 
                                         Signing up...
                                     </div>
                                 ) : (

@@ -12,7 +12,6 @@ const WishList = () => {
                     <WishListProducts />
                     <JustForYou /></>
                 : <div className="h-[400px] flex items-center justify-center">
-                    {/* <p className="text-xl">You haven’t added any products to your wishlist yet</p> */}
                     <img src={imgWishlist} alt="wish list empty" />
                 </div>
             }

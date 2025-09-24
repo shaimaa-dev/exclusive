@@ -9,6 +9,7 @@ import { phone } from '../../assets';
 import { useNavigate } from 'react-router-dom';
 import useData from '../../hooks/useData';
 import { MoonLoader } from 'react-spinners';
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { dispatch } = useData();
@@ -59,8 +60,15 @@ const Login = () => {
                     providerId: user.providerData[0]?.providerId,
                   }
                 });
-                resetForm();
-                navigate("/", { replace: true })
+              }).then(() => {
+                Swal.fire({
+                  title: "Log in successfully",
+                  icon: "success",
+                  draggable: true
+                }).then(() => {
+                  resetForm();
+                  navigate("/", { replace: true })
+                })
               })
               .catch((error) => {
                 setError(handleAuthError(error.code));
@@ -94,8 +102,8 @@ const Login = () => {
             </Form>
           )}
         </Formik>
-        {error && <p  className="text-red-500 text-lg mt-1 mb-2">{error}</p>}
-       
+        {error && <p className="text-red-500 text-lg mt-1 mb-2">{error}</p>}
+
       </div>
     </div>
   )
