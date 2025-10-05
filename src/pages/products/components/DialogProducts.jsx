@@ -7,6 +7,10 @@ const DialogProducts = () => {
   const closeDialog = () => {
     dispatch({type: "CLOSE_PRODUCT"})
   }
+  const addToCart = () => {
+        dispatch({type:"ADD_TO_CART",payload:selectedProduct});
+        closeDialog();
+    }
   return (
     <Dialog open={isOpen} onClose={closeDialog} className="relative z-50">
       <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
@@ -36,6 +40,7 @@ const DialogProducts = () => {
             </button>
             <button
               className="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600"
+              onClick={addToCart}
             >
               Add to Cart
             </button>
