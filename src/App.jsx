@@ -23,11 +23,13 @@ import NotFound from "./pages/notfound/NotFound";
 import { ClipLoader } from "react-spinners";
 import { useEffect, useState } from "react";
 import Category from "./pages/category/Category";
+import ScrollToTop from "./components/ScrollToTop";
 
 const Layout = () => {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <Outlet />
       <Footer />
     </>

@@ -31,9 +31,10 @@ const Navbar = () => {
       <nav className="flex justify-between relative items-center">
         {/* Logo */}
         <div className="logo">
-          <img src={logo} className="w-[100px]" alt="logo" />
+          <Link to='/'>
+            <img src={logo} className="w-[100px]" alt="logo" />
+          </Link>
         </div>
-
         {/* Desktop Links */}
         <div className="hidden lgl:flex gap-8 items-center">
           {navLinks.map(link => (
@@ -99,6 +100,7 @@ const Navbar = () => {
             ${menuOpen ? "translate-x-0  z-50" : "translate-x-full"}`}
         >
           <div className="flex flex-col gap-8 pt-28 items-center relative">
+            <button className="absolute left-5 top-4 text-2xl" onClick={() => setMenuOpen(false)}><IoClose /></button>
             {navLinks.map(link => (
               <NavLink
                 key={link.id}

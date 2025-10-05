@@ -1,7 +1,7 @@
 import { FaMinus, FaPlus, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import BreadCrumb from "../../../components/BreadCrumb"
 import useData from "../../../hooks/useData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,9 @@ const Product = ({ product }) => {
             dispatch({ type: "ADD_TO_WISHLIST_PRODUCTS", payload: product });
         }
     }
+    useEffect(() => {
+        setQuantity(1);
+    }, [product]);
     return (
         <>
             {
