@@ -32,7 +32,7 @@ const Product = ({ product }) => {
     return (
         <>
             {
-                !product ? <h1>product loading .....</h1> :
+                !product ? <div className="h-[100vh] flex items-center justify-center"><ClipLoader className="absolute" color="#db4444" size={50} /></div> :
                     <>
                         <BreadCrumb product={product} />
                         <div className="w-[85%] mx-auto grid grid-cols-1 lgl:grid-cols-3 gap-3">
