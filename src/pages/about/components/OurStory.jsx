@@ -4,7 +4,7 @@ import BreadCrumb from "../../../components/BreadCrumb"
 const OurStory = () => {
     return (
         <>
-            <div className="mt-10">
+            <div className="mt-[100px]">
                 <BreadCrumb />
             </div>
             <div className="w-[85%]   mx-auto lgl:ml-auto grid grid-cols-1  lgl:grid-cols-2  gap-10 items-center my-6">

@@ -43,7 +43,7 @@ const CheckOut = () => {
     email: Yup.string().email().required(),
   })
   return (
-    <div className="w-[85%] mx-auto  my-12 ">
+    <div className="w-[85%] mx-auto  my-12 mt-[70px] ">
       <h5 className="my-6 text-4xl font-semibold">billing details</h5>
       <div className="">
         <div>

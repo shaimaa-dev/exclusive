@@ -27,8 +27,8 @@ const Navbar = () => {
     { id: 3, name: "About", path: "/about" },
   ];
   return (
-    <header className="my-4 w-[85%] mx-auto">
-      <nav className="flex justify-between relative items-center">
+    <header className="w-full fixed z-30 top-0 left-0 bg-white shadow-sm">
+      <nav className=" my-4 w-[85%]  mx-auto flex justify-between relative items-center">
         {/* Logo */}
         <div className="logo">
           <Link to='/'>
@@ -78,11 +78,11 @@ const Navbar = () => {
         <div className="flex gap-3 ml-4">
           <Link to="/wishlist" className="relative">
             <CiHeart className="text-3xl text-black" />
-            {wishListProducts.length >= 1 && <p className="h-[17px] w-[17px] rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center"><span>{wishListProducts.length}</span></p>}
+            {wishListProducts.length >= 1 && <p className={`${wishListProducts.length > 9 ? `h-[20px] w-[20px]`: ` h-[17px] w-[17px]`} rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center`}><span>{wishListProducts.length}</span></p>}
           </Link>
           <Link to="/cart" className="relative">
             <IoCartOutline className="text-3xl text-black" />
-            {cartProducts.length >= 1 && <p className="h-[17px] w-[17px] rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center"><span>{cartProducts.length}</span></p>}
+            {cartProducts.length >= 1 && <p className={`${cartProducts.length > 9 ? `h-[20px] w-[20px]`: ` h-[17px] w-[17px]`} rounded-full absolute right-0 top-[-4px] bg-red-600 text-white flex justify-center items-center`}><span>{cartProducts.length}</span></p>}
           </Link>
         </div>
 
@@ -96,7 +96,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full w-[70%] bg-white shadow-lg transform transition-transform duration-300 ease-in-out lgl:hidden 
+          className={`fixed top-0 right-0 h-[100vh] w-[70%] bg-white shadow-lg transform transition-transform duration-300 ease-in-out lgl:hidden 
             ${menuOpen ? "translate-x-0  z-50" : "translate-x-full"}`}
         >
           <div className="flex flex-col gap-8 pt-28 items-center relative">

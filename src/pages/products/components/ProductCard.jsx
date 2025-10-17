@@ -4,6 +4,8 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
 import useData from '../../../hooks/useData';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+ import 'sweetalert2/dist/sweetalert2.min.css';
 
 const ProductCard = ({ product, haveDiscount }) => {
     const { wishListProducts, dispatch } = useData();
@@ -21,10 +23,25 @@ const ProductCard = ({ product, haveDiscount }) => {
         }
     }
     const addToCart = () => {
-        dispatch({type:"ADD_TO_CART",payload:product})
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "bottom-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+        icon: "success",
+        title: "Added to cart successfully!"
+    });
+        dispatch({ type: "ADD_TO_CART", payload: product })
     }
     return (
-        <div className='group relative z-30 '>
+        <div className='group relative z-10 '>
             <Link to={`/products/${product.category}/${product.id}`}>
                 <div className='bg-[#f5f5f5] h-[250px] flex items-center justify-center'>
                     <img src={product.thumbnail} className='w-[200px]' alt="img-product" />
@@ -66,8 +83,8 @@ const ProductCard = ({ product, haveDiscount }) => {
             </div>
             <div className='absolute top-[215px] w-[100%]'>
                 <button
-                onClick={addToCart} 
-                className='btn block w-full mx-auto bg-black text-white py-2 transition-all duration-300 ease-in-out
+                    onClick={addToCart}
+                    className='btn block w-full mx-auto bg-black text-white py-2 transition-all duration-300 ease-in-out
                  opacity-100 translate-y-0 capitalize lgl:opacity-0 lgl:translate-y-5 group-hover:opacity-100 group-hover:translate-y-0'>add to cart
                 </button>
             </div>

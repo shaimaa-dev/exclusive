@@ -4,7 +4,7 @@ const NotFoundd = () => {
     const location = useLocation();
     console.log(location);
   return (
-    <div className='my-10 w-[85%] mx-auto'>
+    <div className='my-10 w-[85%] mt-[100px] mx-auto'>
         <div className='flex gap-3'>
             <Link to='/' className='text-xl text-gray-600'>Home</Link>
             <span>/</span>
