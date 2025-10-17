@@ -20,7 +20,7 @@ const ProductDetails = () => {
         fetchData();
     },[id])
   return (
-    <div>
+    <div className='mt-[100px]'>
       <Product product={product} />
       <RelatedProducts product={product} />
     </div>

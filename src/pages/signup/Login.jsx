@@ -33,7 +33,7 @@ const Login = () => {
   }
 
   return (
-    <div className="w-[85%] mx-auto my-10 gap-20 grid grid-cols-1 lgl:grid-cols-2">
+    <div className="w-[85%] mx-auto mb-10 mt-[70px] gap-20 grid grid-cols-1  lgl:grid-cols-2">
       <div className="hidden lgl:block">
         <img src={phone} alt="slide img" className="" />
       </div>

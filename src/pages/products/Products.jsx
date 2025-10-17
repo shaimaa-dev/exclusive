@@ -35,7 +35,7 @@ const Products = () => {
     )
   })
   return (
-    <div className="w-[85%] mx-auto">
+    <div className="w-[85%] mx-auto mt-[100px]">
       <div className=" my-12 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" >
         {viewProducts}
       </div>

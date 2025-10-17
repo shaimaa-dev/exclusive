@@ -9,8 +9,7 @@ import SlideCategories from './components/SlideCategories';
 const Home = () => {
   return (
     <>
-      <div className="">
-        <hr />
+      <div className="mt-[60px]">
         <Hero />
         <FlashProducts />
         <BestSallerProducts />

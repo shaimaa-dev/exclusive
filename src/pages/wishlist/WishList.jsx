@@ -6,7 +6,7 @@ import { imgWishlist } from "../../assets";
 const WishList = () => {
     const { wishListProducts } = useData();
     return (
-        <>
+        <div className="mt-[100px]">
             {wishListProducts.length > 0 ?
                 <>
                     <WishListProducts />
@@ -16,7 +16,7 @@ const WishList = () => {
                 </div>
             }
 
-        </>
+        </div>
     )
 }
 
